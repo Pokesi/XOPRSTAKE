@@ -241,7 +241,7 @@ export default function Stake() {
                     onClick={toggleWalletModal}
                     disabled={false}
                   >
-                  {18n._(t`Connect Wallet`)}
+                  {i18n._(t`Connect Wallet`)}
             </button>
             {/* <div className="flex">
                             <div className="mr-14 md:mr-9">
