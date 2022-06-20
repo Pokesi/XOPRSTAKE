@@ -239,7 +239,7 @@ export default function Stake() {
                       buttonStyleConnectWallet
                     }
                     onClick={toggleWalletModal}
-                    disabled={false
+                    disabled={false}
                   >
                   {18n._(t`Connect Wallet`)}
             </button>
