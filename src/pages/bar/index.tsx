@@ -234,6 +234,15 @@ export default function Stake() {
                                 Your xOPR is continuously compounding, when you unstake you will receive all the originally deposited
                                 OPR and any additional from fees.`)}
             </div>
+            <button
+                    className={
+                      buttonStyleConnectWallet
+                    }
+                    onClick={toggleWalletModal}
+                    disabled={false
+                  >
+                  {18n._(t`Connect Wallet`)}
+            </button>
             {/* <div className="flex">
                             <div className="mr-14 md:mr-9">
                                 <StyledLink className="text-sm text-lg whitespace-nowrap md:text-lg md:leading-5">
