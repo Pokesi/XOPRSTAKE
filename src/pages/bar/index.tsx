@@ -150,24 +150,13 @@ export default function Stake() {
 
   const xOPRRatio = async () => {
     await xOPRForOPR(10000).then((res) => {
-      console.log(" ===================== XOPRFOROPR ======================")
-      console.log(res)
       return res
     })
   }
 
   const { data, error, isPending } = useAsync({ promiseFn: xOPRRatio })
 
-  console.log("===============")
-  console.log(isPending)
-  console.log(error)
-  console.log(data)
-
   if (data) { xOPRRatioConst = data } else { xOPRRatioConst = 11743 }
-
-  console.log("========\/========")
-  console.log(xOPRForOPR(10000))
-  console.log("===============")
 
   const exchange = useFactory({ chainId: ChainId.FANTOM })
 
