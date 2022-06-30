@@ -94,7 +94,7 @@ class MiniRpcProvider implements AsyncSendable {
       resolve,
       reject,
       request: { method },
-    } = byKey[json.id]
+    } = (byKey[json.id] || {false, false, response});
     // @ts-ignore TYPE NEEDS FIXING
     if (resolve && reject) {
       if ('error' in Object.keys(json)) {
