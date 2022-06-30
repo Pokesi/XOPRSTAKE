@@ -37,7 +37,7 @@ const useSushiBar = () => {
   )
 
   const xOPRForOPR = async (amount: Number | undefined) => {
-    const res = await barContract?.xOPRForOPR(amount?.toString())
+    const res = (typeof amount === 'number') ? (await barContract?.xOPRForOPR(amount?.toString())) : ("0x0");
     console.log(parseInt(res._hex,16))
     return parseInt(res._hex,16)
   }
