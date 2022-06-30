@@ -56,7 +56,7 @@ class MiniRpcProvider implements AsyncSendable {
     this.batch = []
     this.batchTimeoutId = null
     let response: Response
-    console.log(`${this.url} || ${batch}`);
+    console.log(`${this.url}`);
     try {
       response = await fetch(this.url, {
         method: 'POST',
@@ -76,16 +76,16 @@ class MiniRpcProvider implements AsyncSendable {
       return
     }
     
-    console.log(response);
+    //console.log(response);
 
     let json
     try {
-      json = await response.json()
+      json = await response.json();
     } catch (error) {
       batch.forEach(({ reject }) => reject(new Error('Failed to parse JSON response')))
       return
     }
-    console.log(json);
+    console.log(Object.keys(json));
     const byKey = batch.reduce<{ [id: number]: BatchItem }>((memo, current) => {
       memo[current.request.id] = current
       return memo
