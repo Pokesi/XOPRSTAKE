@@ -149,9 +149,11 @@ export default function Stake() {
   const block1d = useOneDayBlock({ chainId: ChainId.FANTOM })
 
   const xOPRRatio = async () => {
+    let ratio;
     await xOPRForOPR(10000).then((res) => {
-      return res
-    })
+      ratio = res;
+    });
+    return ratio;
   }
 
   const { data, error, isPending } = useAsync({ promiseFn: xOPRRatio })
@@ -168,7 +170,7 @@ export default function Stake() {
     shouldFetch: !!block1d,
   })
 
-  const ethPrice = useNativePrice({ chainId: ChainId.ETHEREUM })
+  const ethPrice = useNativePrice({ chainId: ChainId.FANTOM })
 
   const xOpr = useTokens({
     chainId: ChainId.FANTOM,
