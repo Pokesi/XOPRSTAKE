@@ -90,21 +90,19 @@ class MiniRpcProvider implements AsyncSendable {
       memo[current.request.id] = current
       return memo
     }, {})
-    for (const result of Object.keys(json)) {
-      const {
-        resolve,
-        reject,
-        request: { method },
-      } = byKey[result.id]
-      // @ts-ignore TYPE NEEDS FIXING
-      if (resolve && reject) {
-        if ('error' in result) {
-          reject(new RequestError(result?.error?.message, result?.error?.code, result?.error?.data))
-        } else if ('result' in result) {
-          resolve(result.result)
-        } else {
-          reject(new RequestError(`Received unexpected JSON-RPC response to ${method} request.`, -32000, result))
-        }
+    const {
+      resolve,
+      reject,
+      request: { method },
+    } = byKey[json.id]
+    // @ts-ignore TYPE NEEDS FIXING
+    if (resolve && reject) {
+      if ('error' in Object.keys(json)) {
+        reject(new RequestError(json?.error?.message, json?.error?.code, json?.error?.data))
+      } else if ('result' in Object.keys(json)) {
+        resolve(json.result)
+      } else {
+        reject(new RequestError(`Received unexpected JSON-RPC response to ${method} request.`, -32000, json))
       }
     }
   }
