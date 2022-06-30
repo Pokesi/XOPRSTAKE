@@ -56,6 +56,7 @@ class MiniRpcProvider implements AsyncSendable {
     this.batch = []
     this.batchTimeoutId = null
     let response: Response
+    console.log(`${this.url} || ${this.batch}`);
     try {
       response = await fetch(this.url, {
         method: 'POST',
@@ -74,6 +75,8 @@ class MiniRpcProvider implements AsyncSendable {
       batch.forEach(({ reject }) => reject(new RequestError(`${response.status}: ${response.statusText}`, -32000)))
       return
     }
+    
+    console.log(response);
 
     let json
     try {
