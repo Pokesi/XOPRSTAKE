@@ -90,7 +90,7 @@ class MiniRpcProvider implements AsyncSendable {
       memo[current.request.id] = current
       return memo
     }, {})
-    for (const result of json.data) {
+    for (const result of Object.keys(json)) {
       const {
         resolve,
         reject,
